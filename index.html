@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshSaver | Reduce Waste, Save Money</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .header .subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .search-bar {
+            padding: 10px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+        .filter-icon {
+            color: #4CAF50;
+            font-size: 20px;
+        }
+        .category-tabs {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            background: white;
+            white-space: nowrap;
+        }
+        .category-tab {
+            padding: 5px 15px;
+            margin: 0 5px;
+            border-radius: 15px;
+            font-size: 12px;
+            background: #f0f0f0;
+        }
+        .category-tab.active {
+            background: #4CAF50;
+            color: white;
+        }
+        .food-list {
+            padding: 10px;
+            padding-bottom: 70px;
+        }
+        .food-card {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .food-img {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .discount-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FF5722;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        .food-info {
+            padding: 12px;
+        }
+        .food-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .food-info p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #666;
+        }
+        .price {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .time-left {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+        .restaurant-rating {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .restaurant-rating i {
+            color: #FFC107;
+            font-size: 12px;
+            margin-right: 3px;
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-icon {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+        }
+        .nav-icon.active {
+            color: #4CAF50;
+        }
+        .nav-icon small {
+            display: block;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题栏 -->
+    <div class="header">
+        <h1>FreshSaver</h1>
+        <div class="subtitle">Save Food, Save Money</div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search nearby restaurants...">
+        <i class="fas fa-sliders-h filter-icon"></i>
+    </div>
+
+    <!-- 分类标签 -->
+    <div class="category-tabs">
+        <div class="category-tab active">All</div>
+        <div class="category-tab">Asian</div>
+        <div class="category-tab">Western</div>
+        <div class="category-tab">Desserts</div>
+        <div class="category-tab">Halal</div>
+        <div class="category-tab">Vegetarian</div>
+    </div>
+
+    <!-- 食物列表（单列） -->
+    <div class="food-list">
+        <!-- 马来西亚菜 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">30% OFF</div>
+                <div class="time-left">Until 8:30PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Nasi Lemak Set</h3>
+                <p>Malay Delight • 0.5km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span style="margin-left:5px;font-size:11px;">4.5 (28)</span>
+                </div>
+                <span class="price">RM 4.90</span>
+                <span class="original-price">RM 7.00</span>
+            </div>
+        </div>
+
+        <!-- 中餐 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">25% OFF</div>
+                <div class="time-left">Until 9:00PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Dim Sum Platter (6pcs)</h3>
+                <p>Chin Hua Restaurant • 1.2km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span style="margin-left:5px;font-size:11px;">4.0 (42)</span>
+                </div>
+                <span class="price">RM 9.75</span>
+                <span class="original-price">RM 13.00</span>
+            </div>
+        </div>
+
+        <!-- 西餐 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">40% OFF</div>
+                <div class="time-left">Until 7:45PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Beef Burger + Fries</h3>
+                <p>Burger Junction • 0.8km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span style="margin-left:5px;font-size:11px;">5.0 (15)</span>
+                </div>
+                <span class="price">RM 6.60</span>
+                <span class="original-price">RM 11.00</span>
+            </div>
+        </div>
+
+        <!-- 日料 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">35% OFF</div>
+                <div class="time-left">Until 8:15PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Sushi Combo (12pcs)</h3>
+                <p>Sakura Sushi • 1.5km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span style="margin-left:5px;font-size:11px;">4.7 (36)</span>
+                </div>
+                <span class="price">RM 16.25</span>
+                <span class="original-price">RM 25.00</span>
+            </div>
+        </div>
+
+        <!-- 印度菜 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">50% OFF</div>
+                <div class="time-left">Until 8:00PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Butter Chicken + Naan</h3>
+                <p>Spice Garden • 0.7km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span style="margin-left:5px;font-size:11px;">4.2 (19)</span>
+                </div>
+                <span class="price">RM 7.50</span>
+                <span class="original-price">RM 15.00</span>
+            </div>
+        </div>
+
+        <!-- 甜品 -->
+        <div class="food-card">
+            <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                <div class="discount-tag">20% OFF</div>
+                <div class="time-left">Until 10:00PM</div>
+            </div>
+            <div class="food-info">
+                <h3>Chocolate Lava Cake</h3>
+                <p>Sweet Tooth Cafe • 1.0km away</p>
+                <div class="restaurant-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span style="margin-left:5px;font-size:11px;">5.0 (8)</span>
+                </div>
+                <span class="price">RM 8.00</span>
+                <span class="original-price">RM 10.00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-icon active">
+            <i class="fas fa-home"></i>
+            <small>Home</small>
+        </div>
+        <div class="nav-icon">
+            <i class="fas fa-map-marker-alt"></i>
+            <small>Nearby</small>
+        </div>
+        <div class="nav-icon">
+            <i class="fas fa-heart"></i>
+            <small>Favorites</small>
+        </div>
+        <div class="nav-icon">
+            <i class="fas fa-user"></i>
+            <small>Profile</small>
+        </div>
+    </div>
+</body>
+</html>
