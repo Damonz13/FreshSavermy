@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- iOS主屏幕配置 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="FreshSaver">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 图标配置 -->
+    <link rel="apple-touch-icon" href="https://i.imgur.com/JDv9Q0E.png">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/JDv9Q0E.png">
+    
     <title>FreshSaver | Reduce Waste, Save Money</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -25,6 +36,13 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-logo {
+            height: 30px;
+            margin-right: 10px;
         }
         .search-bar {
             padding: 10px 15px;
@@ -174,8 +192,9 @@
     </style>
 </head>
 <body>
-    <!-- 顶部标题栏 -->
+    <!-- 顶部标题栏（已添加Logo） -->
     <div class="header">
+        <img src="https://i.imgur.com/JDv9Q0E.png" alt="FreshSaver Logo" class="header-logo">
         <h1>FreshSaver</h1>
         <div class="subtitle">Save Food, Save Money</div>
     </div>
@@ -196,7 +215,7 @@
         <div class="category-tab">Vegetarian</div>
     </div>
 
-    <!-- 食物列表（完整6个卡片） -->
+    <!-- 食物列表 -->
     <div class="food-list">
         <!-- 马来西亚菜 -->
         <div class="food-card">
@@ -350,5 +369,19 @@
             <small>Profile</small>
         </div>
     </div>
+
+    <!-- iOS添加到主屏幕后优化 -->
+    <script>
+        // 检测是否是从主屏幕打开
+        if (window.navigator.standalone) {
+            document.documentElement.classList.add('standalone-mode');
+            // 隐藏浏览器UI（需要滚动触发）
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    window.scrollTo(0, 1);
+                }, 0);
+            });
+        }
+    </script>
 </body>
 </html>
